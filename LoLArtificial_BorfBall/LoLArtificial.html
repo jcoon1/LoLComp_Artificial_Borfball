@@ -1,0 +1,246 @@
+<html>
+
+<head>
+    <title>Borfball</title>
+
+    <!--JS-->
+
+    <!-- external general utilities -->
+    <script src="../_shared/js/jquery-1.11.1.min.js "></script>
+    <script src="../_shared/full-projects/jquery-ui/jquery-ui.min.js"></script>
+    <script src="../_shared/js/underscore-min.js"></script>
+    <!-- if you want to draw stuff: -->
+    <!-- <script src="../_shared/js/raphael-min.js"></script> -->
+
+    <!-- cocolab experiment logic -->
+    <script src="../_shared/js/exp-V2.js"></script>
+    <script src="../_shared/js/stream-V2.js"></script>
+
+    <!-- cocolab general utilities -->
+    <script src="../_shared/js/mmturkey.js "></script>
+    <script src="../_shared/js/browserCheck.js"></script>
+    <script src="../_shared/js/utils.js"></script>
+    <script src="../_shared/js/uniqueturker.js"></script>
+    <!-- if you want to draw cute creatures (depends on raphael): -->
+    <!-- <script src="../_shared/js/ecosystem.js"></script> -->
+    <!-- experiment specific helper functions -->
+    <!-- <script src="js/local-utils.js"></script> -->
+
+    <!--CSS-->
+    <link href="../_shared/full-projects/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../_shared/css/cocolab-style.css" rel="stylesheet" type="text/css"/>
+    <link href="css/local-style.css" rel="stylesheet" type="text/css"/>
+
+    <!-- experiment file -->
+    <script src="js/LoLArtificial.js"></script>
+
+</head>
+
+<body onload="init();">
+  <noscript>This task requires JavaScript.</noscript>
+
+  <div class="slide" id="i0" >
+
+    <img src="../_shared/images/sarneckalogo.png" alt="UCI Sarnecka Lab" id="cocologo"></img>
+    <p id="cocolab">UC-Irvine Sarnecka Lab</p>
+    <p id="instruct-text">You will be shown some horse races and asked to evaluate how the subsequent races would turn out. The task should take approximately 20 minutes. Please pay attention, thanks!</p>
+    <button id="start_button" type="button">Start Experiment</button>
+    <p id="legal">Legal information: By answering the following questions, you are participating in a study being performed by scientists in the UC Irvine Department of Cognitive Sciences. If you have questions about this research, please contact Jeff Coon at <a href="mailto://jcoon1@uci.edu">jcoon1@uci.edu</a> or Barbara Sarnecka, at sarnecka@uci.edu. You must be  at least 18 years old to participate. Your participation in this research is voluntary. You may decline to answer any or all of the following questions. You may decline further participation, at any time, without adverse consequences.</p>
+
+  </div>
+
+<!--   <div class="slide" id="botcaptcha">
+    <h3>Are you a bot?</h3>
+    <div id="bot_context"> </div>
+    <input type="text" id="botresponse" size="30"></input>
+    <button onclick="_s.button()" id="bot_button">Continue</button>
+    <p class="text" id="error_incorrect" style="color: #7CB637">This is incorrect.</p>
+    <p class="text" id="error_2more" style="color: #7CB637">You have 2 more trials.</p>
+    <p class="text" id="error_1more" style="color: #7CB637">You have 1 more trial.</p>
+    <p class="text" id="error" style="color: #7CB637">Error: You failed the comprehension questions too many times.
+    You are not permitted to complete the HIT. Please click 'Return HIT' to avoid any impact on your approval rating.
+    <br/><br/>
+    If you believe you are receiving this message in error, please email <a href="mailto://jcoon1@uci.edu">jcoon1@uci.edu</a> </p>
+  </div> -->
+
+  <div class="slide" id="instructions">
+    <h3>Instructions</h3>
+    <p>Here are some instructions.</p>
+    <button onclick="_s.button()">Continue</button>
+  </div>
+
+  <div class="slide" id="background">
+  	<h3>Background Info</h3>
+
+  	<p>Borfball is a competitive 5 player vs. 5 player game. To win, a team must knock over a stack of bricks located behind the opposing team. There are quite a few rules, but you only need to worry about the fact that a game of borfball is divided into two parts.
+  	<br>
+ 	<p>In the first part, called the <i>laning phase</i>, the players generally stay in their positions. As such, opposing players usually compete 
+ 		against each other individually, occasionally leaving their positions to help teammates.
+ 	<br>
+ 	<p>In the second part, called the <i>late game</i>, the players usually group up to try to overpower
+ 		the opposition together, although there may still be occasional 1 vs. 1 battles.
+	<br>
+ 	<p>	Teams which excel in the laning phase benefit from pushing to win quickly. Teams that excel in the late game benefit from dragging the game out. Some teams may even excel in both phases.
+ 	<br>	
+ 	<h3>Summary of Key Terms</h3>
+  	<p><b>Laning phase:</b> early in the game; teams that excel in this phase benefit from pushing to win quickly</p>
+  	<p><b>Late game:</b> late in the game; teams that excel in this phase benefit from dragging the game out</p>
+  	<p><i>Note: It is possible for a borfball team to excel in both phases.</i></p>
+  	 <button onclick="_s.button()">Continue</button>
+</div>
+
+<!-- 
+  <div class="slide" id="baseline">
+    <p>Here are the results of 5 races between <span class="Horse0_name"></span> and <span class="Horse1_name"></span>.</p>
+    <br>
+    <table id="baseline_results_table" class="baseline_results_table">
+      <tr>
+        <th class ="baseline_results_table" id="baseline_results_table"> </th>
+        <th class ="baseline_results_table" id="baseline_results_table"><span class="Horse0_name"></span></th>
+        <th class ="baseline_results_table" id="baseline_results_table"><span class="Horse1_name"></span></th>
+      </tr>
+      <tr>
+        <th class ="baseline_results_table" id="baseline_results_table">Wins</th>
+        <td class ="baseline_results_table" id="baseline_results_table"><span class="Horse0_wins"></span></td>
+        <td class ="baseline_results_table" id="baseline_results_table"><span class="Horse1_wins"></span></td>
+      </tr>
+    </table>
+    <br> -->
+<!-- 
+    <p>Based on these results, how likely do you think <b><span class = "Ref_name"></span></b> is to win their next race?
+
+    <table id="multi_slider_table_Baseline" class="slider_table">
+      <tr><td></td><td class="left">0%</td><td class="right">100%</td></tr>
+    </table>
+
+    <button onclick="_s.button()">Continue</button>
+    <p class="err">Please write something.</p>
+  </div>
+ -->
+  <div class="slide" id="test_trials">
+     <p>Here are the results of 5 races between <span class="Horse0_name"></span> and <span class="Horse1_name"></span>.</p>
+    <br>
+    <table id="test_results_table" class="test_results_table">
+      <tr>
+        <th class ="test_results_table" id="test_results_table"> </th>
+        <th class ="test_results_table" id="test_results_table"><span class="Horse0_name"></span></th>
+        <th class ="test_results_table" id="test_results_table"><span class="Horse1_name"></span></th>
+      </tr>
+      <tr>
+        <th class ="test_results_table" id="test_results_table">Wins</th>
+        <td class ="test_results_table" id="test_results_table"><span class="Horse0_wins"></span></td>
+        <td class ="test_results_table" id="test_results_table"><span class="Horse1_wins"></span></td>
+      </tr>
+    </table>
+
+    <p><b>Imagine you are trying to explain this matchup to another participant. Would you say...</b></p>
+    <p>"In this matchup, anticipate <span class="Horse0_name"></span> winning."</p>
+        <label><input type="radio" name="TVJHorse0" value="1"/>Yes</label> 
+        <label"><input type="radio" name="TVJHorse0" value="0"/>No</label> 
+
+    <p>"In this matchup, anticipate <span class="Horse1_name"></span> winning."</p>
+        <label><input type="radio" name="TVJHorse1" value="1"/>Yes</label> 
+        <label"><input type="radio" name="TVJHorse1" value="0"/>No</label> 
+
+    <p><button onclick="_s.ShowButton1()" class = "ShowButton1">Continue</button></p>
+    <p class="err_radio">Please answer both questions.</p>
+
+    <p class ="hidden1"><b>How likely do you think <span class = "Horse0_name"></span> is to win the next race between these two horses?</b></p>
+      <table id="multi_slider_table_testPred" class="hidden1 slider_table">
+      <tr><td></td><td class="left">0%</td><td class="right">100%</td></tr>
+    </table>
+
+    <button class = "hidden1 ShowButton2" onclick="_s.ShowButton2()">Continue</button>
+    <p class="err_slider1">Please adjust the slider before continuing.</p>
+
+    <p class = "hidden2"><b><span class="Speaker_name"></span> saw 50 races between <span class="Horse0_name"></span> and <span class="Horse1_name"></span>. Based on what he saw, he would tell you, "In this matchup, anticpate <mark><span class="Bet_name"></span></mark> winning."</b></p>
+    <p class = "hidden2"> Of the 50 races <span class ="Speaker_name"></span> saw, in how many do you think <span class="Bet_name"></span> won?
+
+      <table id="multi_slider_table_testSpeaker" class="hidden2 slider_table">
+      <tr><td></td><td class="left">0</td><td class="right">50</td></tr>
+    </table>
+
+    <button class="hidden2" onclick="_s.button()">Continue</button>
+    <p class="err_slider2">Please adjust the slider before continuing.</p>
+  </div>
+
+ <!--  <div class="slide" id="reliability">
+    <p>In your opinion, how reliable is <span class ="Speaker_name"></span> as a source of information on these horse races?</p>
+    <label><input type="radio"  name="reliability" value="-2"/>Very unreliable</label>
+    <label><input type="radio"  name="reliability" value="-1"/>Somewhat unreliable</label>
+    <label><input type="radio"  name="reliability" value="1"/>Somewhat reliable</label>
+    <label><input type="radio"  name="reliability" value="2"/>Very reliable</label>
+    <br>
+    <button onclick="_s.button()">Continue</button>
+    <div class="err">Please adjust all the sliders before continuing.</div>
+  </div>
+ -->
+  <div class="slide"  id="subj_info">
+    <div class="long_form">
+      <div class="subj_info_title">Additional information</div>
+      <p class="info">Answering these questions is optional, but will help us understand your answers.</p>
+      <p>Did you read the instructions and do you think you did the HIT correctly?</p>
+      <label><input type="radio"  name="assess" value="No"/>No</label>
+      <label><input type="radio"  name="assess" value="Yes"/>Yes</label>
+      <label><input type="radio"  name="assess" value="Confused"/>I was confused</label>
+
+      <p>Were there any problems or bugs in the experiment?</p>
+      <textarea id="problems" rows="2" cols="50"></textarea>
+
+      <p>What do you think is a fair price for the work you did?</p>
+      <textarea id="fairprice" rows="1" cols="10"></textarea>
+
+      <p>Gender:
+        <select id="gender">
+          <label><option value=""/></label>
+          <label><option value="Male"/>Male</label>
+          <label><option value="Female"/>Female</label>
+          <label><option value="Other"/>Other</label>
+        </select>
+      </p>
+
+      <p>Age: <input type="text" id="age"/></p>
+
+      <p>Level Of Education:
+        <select id="education">
+          <label><option value="-1"/></label>
+          <label><option value="0"/>Some High School</label>
+          <label><option value="1"/>Graduated High School</label>
+          <label><option value="2"/>Some College</label>
+          <label><option value="3"/>Graduated College</label>
+          <label><option value="4"/>Hold a higher degree</label>
+        </select>
+      </p>
+
+      <p>Native Language: <input type="text" id="language"/></p>
+      <label>(the language(s) spoken at home when you were a child)</label>
+
+      <p>Did you enjoy the hit?</p>
+      <select id="enjoyment">
+        <label><option value="-1"></option></label>
+        <label><option value="0">Worse than the Average HIT</option></label>
+        <label><option value="1" >An Average HIT</option></label>
+        <label><option value="2">Better than average HIT</option></label>
+      </select>
+
+      <p>We would be interested in any comments you have about this experiment. Please type them here:</p>
+      <textarea id="comments" rows="3" cols="50"></textarea>
+      <br/>
+      <button onclick="_s.submit()">Submit</button>
+    </div>
+  </div>
+
+  <div id="thanks" class="slide js" >
+    <p  class="big">Thanks for your Time!</p>
+  </div>
+
+  <div class="progress">
+    <span>Progress:</span>
+    <div class="bar-wrapper">
+      <div class="bar" width="0%">
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

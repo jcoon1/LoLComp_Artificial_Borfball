@@ -1,0 +1,35 @@
+.slider {
+  /* default is width 400 and margin 10 */
+	width: 400;
+	margin: 10px;
+}
+
+table.baseline_results_table {
+	border: 3px solid black;
+}
+
+th.baseline_results_table,td.baseline_results_table{
+	border: 1px solid black;
+	padding: 5px;
+	text-align: center;
+}
+
+table.test_results_table {
+	border: 3px solid black;
+}
+
+th.test_results_table,td.test_results_table{
+	border: 1px solid black;
+	padding: 5px;
+	text-align: center;
+}
+
+table.speaker_results_table {
+	border: 3px solid black;
+}
+
+th.speaker_results_table,td.speaker_results_table{
+	border: 1px solid black;
+	padding: 5px;
+	text-align: center;
+}
