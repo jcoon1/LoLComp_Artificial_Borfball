@@ -23,7 +23,7 @@ def convert_json_to_df(trials_json):
     return df
 
 #load data and name it json_trials
-with open('LoLCompResults_SAVE_SONA.json') as json_file:
+with open('Comp_Borfball_Results.json') as json_file:
     
     # add "[" as first element, remove last comma from end of string, then add "]" to end of string
     # json_file is an _io.textiowrapper object and the .read() method is converting it to a string

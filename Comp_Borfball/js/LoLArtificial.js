@@ -168,6 +168,7 @@ function make_slides(f) {
     button : function() {
       exp.go(); //use exp.go() if and only if there is no "present" data.
       $(".hidden").hide()
+      exp._background_startTime = Date.now();
     }
   });
 
@@ -178,7 +179,13 @@ function make_slides(f) {
     	$(".ShowButton").hide()
     },
     button : function() {
+      this.RT = (Date.now() - exp._background_startTime) / 1000; // record time spent on trial
+      this.log_responses();
+
       exp.go(); //use exp.go() if and only if there is no "present" data.
+    },
+    log_responses : function() {
+      background_RT = this.RT
     }
   });
 
@@ -362,7 +369,7 @@ function make_slides(f) {
     },
 
     ShowButton2 : function() {
-      if (exp.sliderPost_testPred[0] == null) {
+      if (exp.sliderPost_testPred[0] == null||exp.sliderPost_testPred[1] == null) {
         $(".err_slider1").show();
       } else {
         this.log_responses();
@@ -554,18 +561,21 @@ $(".err_mega").hide();
   
   slides.subj_info =  slide({
     name : "subj_info",
+    
     submit : function(e){
       //if (e.preventDefault) e.preventDefault(); // I don't know what this means.
       exp.subj_data = {
+        useremail : $("#useremail").val(),
         language : $("#language").val(),
-        enjoyment : $("#enjoyment").val(),
-        asses : $('input[name="assess"]:checked').val(),
+        // enjoyment : $("#enjoyment").val(),
+        // asses : $('input[name="assess"]:checked').val(),
         age : $("#age").val(),
         gender : $("#gender").val(),
         education : $("#education").val(),
         comments : $("#comments").val(),
-        problems: $("#problems").val(),
-        fairprice: $("#fairprice").val()
+        background_RT : background_RT
+        // problems: $("#problems").val(),
+        // fairprice: $("#fairprice").val()
       };
       exp.go(); //use exp.go() if and only if there is no "present" data.
     }

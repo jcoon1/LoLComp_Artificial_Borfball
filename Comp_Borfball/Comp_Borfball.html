@@ -21,7 +21,7 @@
     <!-- <script src="../_shared/js/mmturkey.js "></script> -->
     <script src="../_shared/js/browserCheck.js"></script>
     <script src="../_shared/js/utils.js"></script>
-   <!--  <script src="../_shared/js/uniqueturker.js"></script> -->
+    <script src="../_shared/js/uniqueturker.js"></script>
     <!-- if you want to draw cute creatures (depends on raphael): -->
     <!-- <script src="../_shared/js/ecosystem.js"></script> -->
     <!-- experiment specific helper functions -->
@@ -148,7 +148,7 @@
     </table>
 
     <button class="hidden2 ShowButton3" onclick="_s.ShowButton3()">Continue</button>
-    <p class="err_slider2">Please adjust the slider before continuing.</p>
+    <p class="err_slider2">Please adjust the sliders before continuing.</p>
 
   <p class = "hidden3"><b>The expert also <mark><i><span class="LateSpeaker_word"></span></span></i></mark> tell you that the <span class="Team_name"></span> excel in the <mark><i>late game</i></mark>.</b></p>
     <p class = "hidden3"><b>Of the 100 games <span class ="Speaker_name"></span> watched, in how many do you think the <span class="Team_name"></span>...</b></p></label>
@@ -178,7 +178,7 @@
       <div class="subj_info_title">Resemblance</div>
       
       <p>What game does borfball remind you of the most?</p>
-      <textarea id="resemble_target" rows="1" cols="10"></textarea>
+      <textarea id="resemble_target" rows="1" cols="20"></textarea>
 
       <p>How strongly does borfball resembles this game?
         <label><input type="radio"  name="resemble_strength" value="0"/>very slightly</label>
@@ -200,20 +200,23 @@
     </div>
   </div>
 
-  <div class="slide"  id="subj_info">
+   <div class="slide"  id="subj_info">
     <div class="long_form">
       <div class="subj_info_title">Additional information</div>
-      <p class="info">Answering these questions is optional, but will help us understand your answers.</p>
-      <p>Did you read the instructions and do you think you did the HIT correctly?</p>
+      <p><b>Please provide your UCI email so we can grant you SONA credit.<br> We will be granting you credit manually. This may take a couple days.</b></p>
+      <p>UCI email: <input type="text" id="useremail"/></p>
+      <p class="info">Answering the remaining questions is optional, but will help us understand your answers. <i><b>Whether you choose to answer or not, 
+      please make sure to hit "Submit" so that your responses to this survey are recorded.</i></b></p>
+<!--       <p>Did you read the instructions and do you think you did the HIT correctly?</p>
       <label><input type="radio"  name="assess" value="No"/>No</label>
       <label><input type="radio"  name="assess" value="Yes"/>Yes</label>
-      <label><input type="radio"  name="assess" value="Confused"/>I was confused</label>
+      <label><input type="radio"  name="assess" value="Confused"/>I was confused</label> -->
 
-      <p>Were there any problems or bugs in the experiment?</p>
+<!--       <p>Were there any problems or bugs in the experiment?</p>
       <textarea id="problems" rows="2" cols="50"></textarea>
 
       <p>What do you think is a fair price for the work you did?</p>
-      <textarea id="fairprice" rows="1" cols="10"></textarea>
+      <textarea id="fairprice" rows="1" cols="10"></textarea> -->
 
       <p>Gender:
         <select id="gender">
@@ -240,13 +243,13 @@
       <p>Native Language: <input type="text" id="language"/></p>
       <label>(the language(s) spoken at home when you were a child)</label>
 
-      <p>Did you enjoy the hit?</p>
+<!--       <p>Did you enjoy the hit?</p>
       <select id="enjoyment">
         <label><option value="-1"></option></label>
         <label><option value="0">Worse than the Average HIT</option></label>
         <label><option value="1" >An Average HIT</option></label>
         <label><option value="2">Better than average HIT</option></label>
-      </select>
+      </select> --> 
 
       <p>We would be interested in any comments you have about this experiment. Please type them here:</p>
       <textarea id="comments" rows="3" cols="50"></textarea>
