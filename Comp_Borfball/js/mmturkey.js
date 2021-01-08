@@ -125,7 +125,7 @@ turk = turk || {};
       // document.body.appendChild(div);
       $.ajax({
           type: 'POST',
-          url: 'https://bayes.langsci.uci.edu/meaninglab/jcoon1/LoLComp_SONA/LoLComp/submit.php',
+          url: 'https://bayes.langsci.uci.edu/meaninglab/jcoon1/Comp_Borfball/Comp_Borfball/submit.php',
           dataType: 'json',
           data: {'jsonData': JSON.stringify(rawData)}
       });
