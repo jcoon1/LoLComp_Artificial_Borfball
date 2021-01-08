@@ -43,7 +43,7 @@
 
     <img src="../_shared/images/sarneckalogo.png" alt="UCI Sarnecka Lab" id="cocologo"></img>
     <p id="cocolab">UC-Irvine Sarnecka Lab</p>
-    <p id="instruct-text">You will be shown some horse races and asked to evaluate how the subsequent races would turn out. The task should take approximately 20 minutes. Please pay attention, thanks!</p>
+    <p id="instruct-text">You will first be introduced to an imaginary sport. You will then be asked to evaluate teams and interpret expert statements about those teams. The task should take approximately 20 minutes. Please pay attention, thanks!</p>
     <button id="start_button" type="button">Start Experiment</button>
     <p id="legal">Legal information: By answering the following questions, you are participating in a study being performed by scientists in the UC Irvine Department of Cognitive Sciences. If you have questions about this research, please contact Jeff Coon at <a href="mailto://jcoon1@uci.edu">jcoon1@uci.edu</a> or Barbara Sarnecka, at sarnecka@uci.edu. You must be  at least 18 years old to participate. Your participation in this research is voluntary. You may decline to answer any or all of the following questions. You may decline further participation, at any time, without adverse consequences.</p>
 
@@ -65,7 +65,9 @@
 
   <div class="slide" id="instructions">
     <h3>Instructions</h3>
-    <p>Here are some instructions.</p>
+    <p>For this experiment, imagine you live in a country where the most popular sport is borfball.
+      <p>On the next slide, you will be given a brief explanation of borfball. Please pay atention as you will be quizzed on your comprehension of the explanation.
+        <p>After the quiz, you will evaluate borfball teams and interpret expert statements about those teams. Please assume those experts are trustworthy.</p>
     <button onclick="_s.button()">Continue</button>
   </div>
 
@@ -74,94 +76,88 @@
 
   	<p>Borfball is a competitive 5 player vs. 5 player game. To win, a team must knock over a stack of bricks located behind the opposing team. There are quite a few rules, but you only need to worry about the fact that a game of borfball is divided into two parts.
   	<br>
- 	<p>In the first part, called the <i>laning phase</i>, the players generally stay in their positions. As such, opposing players usually compete 
+ 	<p>In the first part, called the <i>laning phase</i>, the players generally stay in their positions. Opposing players usually compete 
  		against each other individually, occasionally leaving their positions to help teammates.
  	<br>
  	<p>In the second part, called the <i>late game</i>, the players usually group up to try to overpower
  		the opposition together, although there may still be occasional 1 vs. 1 battles.
 	<br>
- 	<p>	Teams which excel in the laning phase benefit from pushing to win quickly. Teams that excel in the late game benefit from dragging the game out. Some teams may even excel in both phases.
- 	<br>	
- 	<h3>Summary of Key Terms</h3>
-  	<p><b>Laning phase:</b> early in the game; teams that excel in this phase benefit from pushing to win quickly</p>
-  	<p><b>Late game:</b> late in the game; teams that excel in this phase benefit from dragging the game out</p>
-  	<p><i>Note: It is possible for a borfball team to excel in both phases.</i></p>
-  	 <button onclick="_s.button()">Continue</button>
+ 	<p>	Teams that excel in the laning phase benefit from pushing to win quickly. Teams that excel in the late game benefit from dragging the game out. Some teams may even excel in both phases.</p>
+    <button class = "ShowButton" onclick="_s.ShowButton()">Continue</button>	
+ 	<h3 class = "hidden">Summary of Key Terms</h3>
+  	<p class = "hidden"><b>Laning phase:</b> early in the game; teams that excel in this phase benefit from pushing to win quickly</p>
+  	<p class = hidden><b>Late game:</b> late in the game; teams that excel in this phase benefit from dragging the game out</p>
+  	<p class = hidden><i>Note: It is possible for a borfball team to excel in both phases.</i></p>
+  	 <button class="hidden" onclick="_s.button()">Quiz</button>
 </div>
 
-<!-- 
-  <div class="slide" id="baseline">
-    <p>Here are the results of 5 races between <span class="Horse0_name"></span> and <span class="Horse1_name"></span>.</p>
-    <br>
-    <table id="baseline_results_table" class="baseline_results_table">
-      <tr>
-        <th class ="baseline_results_table" id="baseline_results_table"> </th>
-        <th class ="baseline_results_table" id="baseline_results_table"><span class="Horse0_name"></span></th>
-        <th class ="baseline_results_table" id="baseline_results_table"><span class="Horse1_name"></span></th>
-      </tr>
-      <tr>
-        <th class ="baseline_results_table" id="baseline_results_table">Wins</th>
-        <td class ="baseline_results_table" id="baseline_results_table"><span class="Horse0_wins"></span></td>
-        <td class ="baseline_results_table" id="baseline_results_table"><span class="Horse1_wins"></span></td>
-      </tr>
-    </table>
-    <br> -->
-<!-- 
-    <p>Based on these results, how likely do you think <b><span class = "Ref_name"></span></b> is to win their next race?
 
-    <table id="multi_slider_table_Baseline" class="slider_table">
-      <tr><td></td><td class="left">0%</td><td class="right">100%</td></tr>
-    </table>
-
-    <button onclick="_s.button()">Continue</button>
-    <p class="err">Please write something.</p>
+  <div class="slide" id="compcheck">
+    <h3>Comprehension Check</h3>
+    <p><b>1. <span class = "Question0"></span></b></p>
+        <label><input type="radio" name="compcheck0" value="0"/><span class = "Option0_0"></span></label> 
+        <label><input type="radio" name="compcheck0" value="1"/><span class = "Option0_1"></span></label> 
+<br>
+    <p><b>2. <span class = "Question1"></span></b></p>
+        <label><input type="radio" name="compcheck1" value="0"/><span class = "Option1_0"></span></label> 
+        <label><input type="radio" name="compcheck1" value="1"/><span class = "Option1_1"></span></label> 
+<br>
+    <p><b>3. <span class = "Question2"></span></b></p>
+        <label><input type="radio" name="compcheck2" value="0"/><span class = "Option2_0"></span></label> 
+        <label><input type="radio" name="compcheck2" value="1"/><span class = "Option2_1"></span></label>
+<br>
+    <p><b>4. <span class = "Question3"></span></b></p>
+        <label><input type="radio" name="compcheck3" value="0"/><span class = "Option3_0"></span></label> 
+        <label><input type="radio" name="compcheck3" value="1"/><span class = "Option3_1"></span></label> 
+        <br>
+        <br>
+        <button onclick="_s.button()">Continue</button>
+        <p class="err">Please answer all the questions.</p>
   </div>
- -->
+
   <div class="slide" id="test_trials">
-     <p>Here are the results of 5 races between <span class="Horse0_name"></span> and <span class="Horse1_name"></span>.</p>
-    <br>
-    <table id="test_results_table" class="test_results_table">
-      <tr>
-        <th class ="test_results_table" id="test_results_table"> </th>
-        <th class ="test_results_table" id="test_results_table"><span class="Horse0_name"></span></th>
-        <th class ="test_results_table" id="test_results_table"><span class="Horse1_name"></span></th>
-      </tr>
-      <tr>
-        <th class ="test_results_table" id="test_results_table">Wins</th>
-        <td class ="test_results_table" id="test_results_table"><span class="Horse0_wins"></span></td>
-        <td class ="test_results_table" id="test_results_table"><span class="Horse1_wins"></span></td>
-      </tr>
-    </table>
+     <p>You have been examining the <span class="Team_name"></span> performance in the <mark><i><span class="Which_Evidence_word"></span></i></mark>.</p>
+    <p>You have seen them play <span class="Max_Evidence"></span> games against random opponents, and they have excelled in the <mark><i><span class="Which_Evidence_word"></span></i></mark> in <b><span class="Evidence"></span></b> of those <b><span class="Max_Evidence"></span></b> games.
 
-    <p><b>Imagine you are trying to explain this matchup to another participant. Would you say...</b></p>
-    <p>"In this matchup, anticipate <span class="Horse0_name"></span> winning."</p>
-        <label><input type="radio" name="TVJHorse0" value="1"/>Yes</label> 
-        <label"><input type="radio" name="TVJHorse0" value="0"/>No</label> 
+    <p><b>Imagine you are trying to describe this team to a friend. Would you say...</b></p>
+    <p>...the <span class="Team_name"></span> excel in the laning phase?</p>
+        <label><input type="radio" name="TVJEarly" value="1"/>Yes</label> 
+        <label><input type="radio" name="TVJEarly" value="0"/>No</label> 
+        <label><input type="radio" name="TVJEarly" value="2"/>Don't know</label> 
 
-    <p>"In this matchup, anticipate <span class="Horse1_name"></span> winning."</p>
-        <label><input type="radio" name="TVJHorse1" value="1"/>Yes</label> 
-        <label"><input type="radio" name="TVJHorse1" value="0"/>No</label> 
+    <p>...the <span class="Team_name"></span> excel in the late game?</p>
+        <label><input type="radio" name="TVJLate" value="1"/>Yes</label> 
+        <label><input type="radio" name="TVJLate" value="0"/>No</label> 
+        <label><input type="radio" name="TVJLate" value="2"/>Don't know</label>
 
     <p><button onclick="_s.ShowButton1()" class = "ShowButton1">Continue</button></p>
     <p class="err_radio">Please answer both questions.</p>
 
-    <p class ="hidden1"><b>How likely do you think <span class = "Horse0_name"></span> is to win the next race between these two horses?</b></p>
+    <p class ="hidden1"><b>If you watched the <span class="Team_name"></span> play 100 games against random opponents, in how many of those games would you expect them to...</b></p>
       <table id="multi_slider_table_testPred" class="hidden1 slider_table">
-      <tr><td></td><td class="left">0%</td><td class="right">100%</td></tr>
+      <tr><td></td><td class="left">0</td><td class="right">100</td></tr>
     </table>
 
     <button class = "hidden1 ShowButton2" onclick="_s.ShowButton2()">Continue</button>
     <p class="err_slider1">Please adjust the slider before continuing.</p>
 
-    <p class = "hidden2"><b><span class="Speaker_name"></span> saw 50 races between <span class="Horse0_name"></span> and <span class="Horse1_name"></span>. Based on what he saw, he would tell you, "In this matchup, anticpate <mark><span class="Bet_name"></span></mark> winning."</b></p>
-    <p class = "hidden2"> Of the 50 races <span class ="Speaker_name"></span> saw, in how many do you think <span class="Bet_name"></span> won?
-
-      <table id="multi_slider_table_testSpeaker" class="hidden2 slider_table">
-      <tr><td></td><td class="left">0</td><td class="right">50</td></tr>
+    <p class = "hidden2"><b>An expert watched the <span class="Team_name"></span> play 100 games against random opponents. Based on what they saw, the expert <mark><i><span class="EarlySpeaker_word"></span></i></mark> tell you that the <span class="Team_name"></span> excel in <mark><i>laning phase</i></mark>.<br><br>What do you think the expert is trying to communicate? In other words, of the 100 games witnessed by the expert, in how many of those games do you think the <span class="Team_name"></span>...</b></p>
+      <table id="multi_slider_table_testSpeaker1" class="hidden2 slider_table">
+      <tr><td></td><td class="left">0</td><td class="right">100</td></tr>
     </table>
 
-    <button class="hidden2" onclick="_s.button()">Continue</button>
+    <button class="hidden2 ShowButton3" onclick="_s.ShowButton3()">Continue</button>
     <p class="err_slider2">Please adjust the slider before continuing.</p>
+
+  <p class = "hidden3"><b>The expert also <mark><i><span class="LateSpeaker_word"></span></span></i></mark> tell you that the <span class="Team_name"></span> excel in the <mark><i>late game</i></mark>.</b></p>
+    <p class = "hidden3"><b>Of the 100 games <span class ="Speaker_name"></span> watched, in how many do you think the <span class="Team_name"></span>...</b></p></label>
+
+    <table id="multi_slider_table_testSpeaker2" class="hidden3 slider_table">
+      <tr><td></td><td class="left">0</td><td class="right">100</td></tr>
+    </table>
+
+    <button class="hidden3" onclick="_s.button()">Continue</button>
+    <p class="err_slider3">Please adjust the slider before continuing.</p>
   </div>
 
  <!--  <div class="slide" id="reliability">
@@ -175,6 +171,34 @@
     <div class="err">Please adjust all the sliders before continuing.</div>
   </div>
  -->
+
+ <div class = "slide" id="resemblance">
+    <div class="long_form">
+      <div class="subj_info_title">Resemblance</div>
+      
+      <p>What game does borfball remind you of the most?</p>
+      <textarea id="resemble_target" rows="1" cols="10"></textarea>
+
+      <p>How strongly does borfball resembles this game?
+        <label><input type="radio"  name="resemble_strength" value="0"/>very slightly</label>
+        <label><input type="radio"  name="resemble_strength" value="1"/>slightly</label>
+        <label><input type="radio"  name="resemble_strength" value="2"/>somewhat strongly</label>
+        <label><input type="radio"  name="resemble_strength" value="3"/>very strongly</label>
+      </p>
+
+      <p>How much experience knowledge/experience do you have with this game?
+        <label><input type="radio"  name="resemble_exp" value="0"/>hardly any</label>
+        <label><input type="radio"  name="resemble_exp" value="1"/>a bit</label>
+        <label><input type="radio"  name="resemble_exp" value="2"/>some</label>
+        <label><input type="radio"  name="resemble_exp" value="3"/>a lot</label>
+
+        <button onclick="_s.megaButton()">Continue</button>
+    <div class="err_mega">Please answer all questions before continuing.</div>
+
+
+    </div>
+  </div>
+
   <div class="slide"  id="subj_info">
     <div class="long_form">
       <div class="subj_info_title">Additional information</div>
