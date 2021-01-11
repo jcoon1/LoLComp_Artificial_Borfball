@@ -2,7 +2,7 @@
 n_total = 12
 n_baseline = 0
 n_test = 12
-max_evidence = 6
+
 
 First_names = ["Blue ","Red ","Green ","Yellow ","White ","Black ","Silver ","Golden ","Bronze ","Iron ","Gray ","Orange "]
 
@@ -31,6 +31,16 @@ function coinFlip() {
     return Math.floor(Math.random() * 2);
 }
 
+game_name_options = shuffle(["morseth","kwep","blin","reesle","dorb","zorb","taifel","truft","daith","mook",
+  "fram","luzak","jav","wug","cheeba","plov","grink","glippet","saper","stup","krivel","zoov","thup","crullet","fep"])
+
+game_name = game_name_options[0]
+
+cap_game_name = game_name.substring(0, 1).toUpperCase() + game_name.substring(1);
+
+condition_options = shuffle([1,3,8])
+condition = condition_options[0]
+
 Shuffled_first_names = shuffle(First_names)
 Shuffled_second_names = shuffle(Second_names)
 
@@ -42,8 +52,10 @@ for(i=0;i<n_total;i++){
 
 //Create test trials race results
 
-Test_exemplify_early = [1,3,5]
-Test_exemplify_late = [1,3,5]
+Test_exemplify_early = [1*condition,3*condition,5*condition]
+Test_exemplify_late = [1*condition,3*condition,5*condition]
+
+max_evidence = 6*condition
 
 Test_trial_array = []
 
@@ -127,11 +139,20 @@ if(which_response_first==0){
 	CorrectResponses = [0,1,0,0]
 }else{CorrectResponses = [0,1,1,0]}
 
-"Score more points"
+str1 = "When in a game of "
+str3 = " do players generally compete individually?"
+Q1 = str1.concat(game_name,str3)
 
-compcheck_questions = shuffle([{Question: "When in a game of borfball do players generally compete individually?", Options: ["Laning phase","Late game"], Correct: CorrectResponses[0]},
-						{Question: "When in a game of borfball do players generally compete in groups?", Options: ["Laning phase","Late game"], Correct: CorrectResponses[1]},
-						{Question: "How does a team win a game of borfball?", Options: [win_responses[which_response_first[0]], win_responses[which_response_first[1]]], Correct: CorrectResponses[2]},
+str3_2 = " do players generally compete in groups?"
+Q2 = str1.concat(game_name,str3_2)
+
+str1_3 = "How does a team win a game of "
+str3_3 = "?"
+Q3 = str1_3.concat(game_name,str3_3)
+
+compcheck_questions = shuffle([{Question: Q1, Options: ["Laning phase","Late game"], Correct: CorrectResponses[0]},
+						{Question: Q2, Options: ["Laning phase","Late game"], Correct: CorrectResponses[1]},
+						{Question: Q3, Options: [win_responses[which_response_first[0]], win_responses[which_response_first[1]]], Correct: CorrectResponses[2]},
 						{Question: "Can teams potentially excel in both the laning phase and the late game?", Options: ["Yes","No"], Correct: CorrectResponses[3]}])
 
 compcheck_array = []						
@@ -165,6 +186,9 @@ function make_slides(f) {
 
   slides.instructions = slide({
     name : "instructions",
+    start: function() {
+      $(".game_name").html(game_name)
+    },
     button : function() {
       exp.go(); //use exp.go() if and only if there is no "present" data.
       $(".hidden").hide()
@@ -174,6 +198,10 @@ function make_slides(f) {
 
   slides.background = slide({
     name : "background",
+    start: function() {
+      $(".game_name").html(game_name)
+      $(".cap_game_name").html(cap_game_name)
+    },
     ShowButton : function() {
     	$(".hidden").show()
     	$(".ShowButton").hide()
@@ -196,6 +224,7 @@ function make_slides(f) {
       $(".err").hide();
       this.stim = stim; //I like to store this information in the slide so I can record it later.
       this.startTime = Date.now();
+      $(".game_name").html(game_name)
       $(".Question0").html(stim.Question0)
       $(".Question1").html(stim.Question1)
       $(".Question2").html(stim.Question2)
@@ -276,7 +305,7 @@ function make_slides(f) {
       $(".err").hide();
       this.stim = stim; //I like to store this information in the slide so I can record it later.
       this.startTime = Date.now();
-
+      
       $(".Team_name").html(stim.Team_name)
       $(".Evidence").html(stim.Evidence)
       $(".Max_Evidence").html(stim.Max_Evidence)
@@ -465,7 +494,7 @@ function make_slides(f) {
 
     log_responses : function() {
       exp.data_trials.push({
-        "trial_type" : "one_slider",
+        "trial_type" : "test",
         "trial_num": this.trial_num,
         "RT": this.RT,
         "Team_name": this.stim.Team_name,
@@ -531,6 +560,7 @@ function make_slides(f) {
   present: [{"emptiness": "dear god please work"}],
 
 present_handle : function(stim){
+  $(".game_name").html(game_name)
 $(".err_mega").hide();
 },
 
@@ -550,6 +580,8 @@ $(".err_mega").hide();
 
   log_responses : function() {
     exp.resemblance = {
+    "trial_type" : "resemblance",
+    "game_name" : game_name,
     "resemble_target" : $("resemble_target").val(),
     "resemble_strength" : $('input[name="assess"]:checked').val(),
     "resemble_exp" : $('input[name="assess"]:checked').val(),
