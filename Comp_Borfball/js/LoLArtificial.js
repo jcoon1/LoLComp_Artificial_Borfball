@@ -60,7 +60,10 @@ max_evidence = 6*condition
 Test_trial_array = []
 
 Evidence_options = ["laning phase","late game"]
-Statement_options = ["would","would not"]
+Statement_options = ["would not","would"]
+
+Statement_colors = ['background-color:#00FF00','background-color:#FF00FF']
+Evidence_options = ['background-color:#FF00FF','background-color:#FFA500']
 
 for(i=0;i<(n_test/4);i++){
   Name1 = i*4
@@ -324,6 +327,15 @@ function make_slides(f) {
       $(".hidden1").hide();
       $(".hidden2").hide();
       $(".hidden3").hide();
+
+      // if(stim.EarlySpeaker_index==0){
+      //   <style>
+      //     mark { 
+      //   background-color: green;
+      //   color: black;
+      //   }
+      // </style>
+      // }
 
       $('input[type=radio]').attr('checked', false); //for radio button response
 
