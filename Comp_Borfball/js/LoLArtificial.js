@@ -62,9 +62,6 @@ Test_trial_array = []
 Evidence_options = ["laning phase","late game"]
 Statement_options = ["would not","would"]
 
-Statement_colors = ['background-color:#00FF00','background-color:#FF00FF']
-Evidence_options = ['background-color:#FF00FF','background-color:#FFA500']
-
 for(i=0;i<(n_test/4);i++){
   Name1 = i*4
   Name2 = i*4+1
@@ -265,7 +262,7 @@ function make_slides(f) {
       exp.compcheck = {
         "trial_type" : "compcheck",
         "trial_num": this.trial_num,
-        "RT": this.RT,
+        "CompCheck_RT": this.RT,
         "compQuestion0": this.stim.Question0,
         "compOption0_0": this.stim.Option0_0,
         "compOption0_1": this.stim.Option0_1,
