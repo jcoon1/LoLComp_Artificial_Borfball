@@ -589,11 +589,10 @@ $(".err_mega").hide();
 
   log_responses : function() {
     exp.resemblance = {
-    "trial_type" : "resemblance",
     "game_name" : game_name,
-    "resemble_target" : $("resemble_target").val(),
-    "resemble_strength" : $('input[name="assess"]:checked').val(),
-    "resemble_exp" : $('input[name="assess"]:checked').val(),
+    "resemble_target" : $("#resemble_target").val(),
+    "resemble_strength" : $('input[name="resemble_strength"]:checked').val(),
+    "resemble_exp" : $('input[name="resemble_exp"]:checked').val()
   }
   } 
 
