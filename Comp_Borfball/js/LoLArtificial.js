@@ -393,17 +393,17 @@ function make_slides(f) {
 
 
     ShowButton1 : function() {
-      if ($('input[name=TVJEarly]:checked').size() <= 0 || $('input[name=TVJLate]:checked').size() <= 0) {
-        $(".err_radio").show();
-      } else {
-        this.log_responses();
+      // if ($('input[name=TVJEarly]:checked').size() <= 0 || $('input[name=TVJLate]:checked').size() <= 0) {
+      //   $(".err_radio").show();
+      // } else {
+      //   this.log_responses();
 
-        /* use _stream.apply(this); if and only if there is
-        "present" data. (and only *after* responses are logged) */
+      //   /* use _stream.apply(this); if and only if there is
+      //   "present" data. (and only *after* responses are logged) */
         $(".hidden1").show();
         $(".ShowButton1").hide();
         $(".err_radio").hide();
-      }
+      // }
     },
 
     ShowButton2 : function() {
